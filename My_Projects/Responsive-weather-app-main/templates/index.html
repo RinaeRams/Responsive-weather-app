@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App - Beautiful & Dynamic</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Background Animation -->
+        <div class="background-animation">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+            <div class="rain-container"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <i class="fas fa-cloud-sun"></i>
+                    WeatherScope
+                </h1>
+                <button class="action-btn" id="favoriteBtn" title="Add to Favorites">
+                    <i class="far fa-heart"></i>
+                </button>
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="citySearch" placeholder="Search for a city..." autocomplete="off">
+                        <button id="searchBtn" class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Loading Spinner -->
+            <div class="loading-spinner" id="loadingSpinner">
+                <div class="spinner"></div>
+                <p>Loading weather data...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p id="errorText">Something went wrong. Please try again.</p>
+            </div>
+
+            <!-- Weather Content -->
+            <div class="weather-content" id="weatherContent">
+                <!-- Current Weather Card -->
+                <div class="weather-card current-weather">
+                    <div class="current-weather-header">
+                        <div class="location-info">
+                            <h2 id="currentCity">London</h2>
+                            <p id="currentCountry">United Kingdom</p>
+                            <p id="currentTime" class="current-time"></p>
+                        </div>
+                        <div class="weather-icon-main">
+                            <img id="currentWeatherIcon" src="" alt="Weather Icon" class="weather-icon-large">
+                        </div>
+                    </div>
+                    
+                    <div class="current-weather-main">
+                        <div class="temperature-display">
+                            <span id="currentTemp" class="temperature">20</span>
+                            <span class="temperature-unit">°C</span>
+                        </div>
+                        <div class="weather-description">
+                            <p id="currentDescription">Partly Cloudy</p>
+                            <p class="feels-like">Feels like <span id="feelsLike">22</span>°C</p>
+                        </div>
+                    </div>
+
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <span class="detail-label">Humidity</span>
+                            <span id="humidity" class="detail-value">65%</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-wind"></i>
+                            <span class="detail-label">Wind</span>
+                            <span id="windSpeed" class="detail-value">12 km/h</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span class="detail-label">Pressure</span>
+                            <span id="pressure" class="detail-value">1013 hPa</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-eye"></i>
+                            <span class="detail-label">Visibility</span>
+                            <span id="visibility" class="detail-value">10 km</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-sun"></i>
+                            <span class="detail-label">Sunrise</span>
+                            <span id="sunrise" class="detail-value">06:30</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-moon"></i>
+                            <span class="detail-label">Sunset</span>
+                            <span id="sunset" class="detail-value">19:45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Forecast Section -->
+                <div class="forecast-section">
+                    <h3 class="section-title">5-Day Forecast</h3>
+                    <div class="forecast-container" id="forecastContainer">
+                        <!-- Forecast items will be dynamically generated -->
+                    </div>
+                </div>
+
+                <!-- Hourly Forecast -->
+                <div class="hourly-forecast-section">
+                    <h3 class="section-title">24-Hour Forecast</h3>
+                    <div class="hourly-forecast-container" id="hourlyForecastContainer">
+                        <!-- Hourly forecast items will be dynamically generated -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 WeatherScope. Powered by OpenWeatherMap API</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
